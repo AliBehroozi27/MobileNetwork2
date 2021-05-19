@@ -1,0 +1,5 @@
+ext {
+    libraries = [
+            hilt        : "2.35.1"
+    ]
+}

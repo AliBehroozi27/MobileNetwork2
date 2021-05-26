@@ -1,0 +1,11 @@
+apply plugin: 'kotlin'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    implementation project(":data")
+
+    implementation "io.reactivex.rxjava3:rxjava:$libraries.rxJava"
+    implementation 'javax.inject:javax.inject:1'
+}

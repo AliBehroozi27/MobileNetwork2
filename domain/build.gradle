@@ -4,6 +4,8 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
-    implementation "io.reactivex.rxjava3:rxjava:$libraries.rxJava"
     implementation 'javax.inject:javax.inject:1'
+
+    // Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$libraries.coroutines")
 }

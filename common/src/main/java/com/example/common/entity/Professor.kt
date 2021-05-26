@@ -1,6 +1,6 @@
-package com.example.local.dto
+package com.example.common.entity
 
-data class ProfessorDto(
+data class Professor constructor(
     val name: String,
     val course: String,
     val imageResourcePath: String,

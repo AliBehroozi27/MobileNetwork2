@@ -3,3 +3,4 @@ rootProject.name = "My Application"
 include ':local'
 include ':data'
 include ':domain'
+include ':common'

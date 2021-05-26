@@ -1,6 +1,6 @@
 package com.example.domain.interactor
 
-import com.example.domain.model.Professor
+import com.example.common.entity.Professor
 import com.example.domain.repository.ProfessorRepository
 import javax.inject.Inject
 

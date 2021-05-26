@@ -5,6 +5,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     implementation project(":data")
+    implementation project(':common')
 
     implementation 'javax.inject:javax.inject:1'
 

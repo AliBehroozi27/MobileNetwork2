@@ -5,7 +5,9 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     implementation project(":data")
+    implementation project(':common')
 
-    implementation "io.reactivex.rxjava3:rxjava:$libraries.rxJava"
     implementation 'javax.inject:javax.inject:1'
+
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$libraries.coroutines")
 }

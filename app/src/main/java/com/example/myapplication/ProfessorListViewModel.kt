@@ -3,9 +3,13 @@ package com.example.myapplication
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.domain.interactor.GetProfessorsUseCase
-import com.example.domain.model.Professor
+import com.example.common.entity.Professor
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
@@ -20,11 +24,13 @@ class ProfessorListViewModel @Inject constructor(
     val errorMessage: LiveData<String> = _errorMessage
 
     init {
-        getProfessorProfessorsUseCase.execute(
-            GetProfessorsUseCase.None(),
-            ::onProfessorsLoaded,
-            ::onProfessorsLoadingFailed
-        )
+        viewModelScope.launch {
+            try {
+                onProfessorsLoaded(getProfessorProfessorsUseCase())
+            } catch (cause: Throwable) {
+                onProfessorsLoadingFailed(cause)
+            }
+        }
     }
 
     private fun onProfessorsLoaded(professors: List<Professor>) {

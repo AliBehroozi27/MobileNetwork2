@@ -46,15 +46,14 @@ dependencies {
     implementation "com.google.dagger:hilt-android:$libraries.hilt"
     kapt "com.google.dagger:hilt-compiler:$libraries.hilt"
 
-    // RxJava
-    implementation "io.reactivex.rxjava3:rxjava:$libraries.rxJava"
-    implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
-
     // ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$libraries.lifecycle")
 
     // LiveData
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$libraries.lifecycle")
+
+    // Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$libraries.coroutines")
 
     // Lifecycles only (without ViewModel or LiveData)
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$libraries.lifecycle")
@@ -65,4 +64,5 @@ dependencies {
     implementation project(':domain')
     implementation project(':data')
     implementation project(':local')
+    implementation project(':common')
 }

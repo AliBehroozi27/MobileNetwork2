@@ -1,12 +1,12 @@
 package com.example.myapplication.ui.professorsList
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -33,7 +33,6 @@ class ProfessorListFragment : Fragment() {
 
     private val itemClickListener = object : ProfessorAdapter.OnClickListener {
         override fun onClick(position: Int) {
-            Log.e("AAA", "onClick: $position")
         }
     }
 
@@ -46,7 +45,13 @@ class ProfessorListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupUi()
         observe()
+    }
+
+    private fun setupUi() {
+        (activity as AppCompatActivity?)?.supportActionBar?.title =
+            resources.getString(R.string.professors_list)
     }
 
     private fun observe() {

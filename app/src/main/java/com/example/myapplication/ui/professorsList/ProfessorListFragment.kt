@@ -52,6 +52,8 @@ class ProfessorListFragment : Fragment() {
     private fun setupUi() {
         (activity as AppCompatActivity?)?.supportActionBar?.title =
             resources.getString(R.string.professors_list)
+
+        setupList()
     }
 
     private fun observe() {
@@ -65,7 +67,7 @@ class ProfessorListFragment : Fragment() {
         })
 
         viewModel.professorsLiveData.observe(viewLifecycleOwner, {
-            setupList(it)
+            listAdapter!!.submitList(it)
         })
 
         viewModel.errorMessageLiveData.observe(viewLifecycleOwner, {
@@ -73,13 +75,12 @@ class ProfessorListFragment : Fragment() {
         })
     }
 
-    private fun setupList(professors: List<Professor>) {
+    private fun setupList() {
         if (listAdapter == null) {
             listAdapter = ProfessorAdapter(viewModel.diffCallback, itemClickListener)
         }
         rvList.layoutManager = LinearLayoutManager(context)
         rvList.adapter = listAdapter
-        listAdapter?.submitList(professors)
     }
 
     private fun setDataState() {

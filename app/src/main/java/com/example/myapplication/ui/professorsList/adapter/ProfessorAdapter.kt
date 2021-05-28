@@ -10,22 +10,22 @@ import com.example.myapplication.ui.professorsList.viewholder.ProfessorViewHolde
 
 class ProfessorAdapter(
     callback: DiffUtil.ItemCallback<Professor>,
-    private val onClickListener: OnClickListener
+    private val onItemClickListener: OnItemClickListener
 ) : ListAdapter<Professor, ProfessorViewHolder>(callback) {
 
-    interface OnClickListener {
-        fun onClick(position: Int)
+    interface OnItemClickListener {
+        fun onClick(professor: Professor)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProfessorViewHolder {
         return ProfessorViewHolder(
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_professor, parent, false)
+                .inflate(R.layout.item_professor, parent, false),
+            onItemClickListener
         )
     }
 
     override fun onBindViewHolder(holder: ProfessorViewHolder, position: Int) {
-        holder.fillData(currentList[position], position)
-        holder.setOnClickListener(onClickListener)
+        holder.fillData(currentList[position])
     }
 }

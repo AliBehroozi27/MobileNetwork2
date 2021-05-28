@@ -31,8 +31,8 @@ class ProfessorListFragment : Fragment() {
         ViewModelProvider(this)[ProfessorListViewModel::class.java]
     }
 
-    private val itemClickListener = object : ProfessorAdapter.OnClickListener {
-        override fun onClick(position: Int) {
+    private val itemClickListener = object : ProfessorAdapter.OnItemClickListener {
+        override fun onClick(professor: Professor) {
         }
     }
 

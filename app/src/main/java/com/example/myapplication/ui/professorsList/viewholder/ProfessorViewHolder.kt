@@ -7,27 +7,27 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.common.entity.Professor
 import com.example.myapplication.R
 import com.example.myapplication.ui.professorsList.adapter.ProfessorAdapter
-import java.text.FieldPosition
 
 class ProfessorViewHolder(
-    itemView: View
+    itemView: View,
+    private val onItemClickListener: ProfessorAdapter.OnItemClickListener
 ) : RecyclerView.ViewHolder(itemView) {
 
     private var ivProfessorPhoto : AppCompatImageView = itemView.findViewById(R.id.ivProfessorPhoto)
     private var tvProfessorName : AppCompatTextView = itemView.findViewById(R.id.tvProfessorName)
     private var tvCourseTitle : AppCompatTextView = itemView.findViewById(R.id.tvCourseTitle)
-    private var itemPosition = -1
+    private lateinit var professor :Professor
 
-    fun fillData(professor: Professor, position: Int) {
-        itemPosition = position
+    init {
+        itemView.setOnClickListener {
+            onItemClickListener.onClick(professor)
+        }
+    }
+
+    fun fillData(professor: Professor) {
+        this.professor = professor
         ivProfessorPhoto.setImageResource(R.drawable.ic_launcher_background)
         tvProfessorName.text = professor.name
         tvCourseTitle.text = professor.course
-    }
-
-    fun setOnClickListener(onClickListener: ProfessorAdapter.OnClickListener) {
-        itemView.setOnClickListener {
-            onClickListener.onClick(itemPosition)
-        }
     }
 }

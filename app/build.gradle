@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 29
@@ -32,6 +33,10 @@ android {
     buildFeatures {
         viewBinding true
     }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
 }
 
 dependencies {
@@ -42,6 +47,20 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.12'
+
+    // Navigation
+    implementation("androidx.navigation:navigation-fragment-ktx:$libraries.nav_version")
+    implementation("androidx.navigation:navigation-ui-ktx:$libraries.nav_version")
+    implementation("androidx.navigation:navigation-dynamic-features-fragment:$libraries.nav_version")
+
+    // Fragment-ktx
+    implementation("androidx.fragment:fragment-ktx:$libraries.fragment_ktx")
+
+    // RecyclerView
+    implementation "androidx.recyclerview:recyclerview:$libraries.recyclerview"
+
+    // CardView
+    implementation "androidx.cardview:cardview:$libraries.cardview"
 
     // Hilt
     implementation "com.google.dagger:hilt-android:$libraries.hilt"

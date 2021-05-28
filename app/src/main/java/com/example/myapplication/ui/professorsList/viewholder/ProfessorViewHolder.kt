@@ -5,11 +5,17 @@ import com.example.common.entity.Professor
 import com.example.myapplication.R
 import com.example.myapplication.databinding.ItemProfessorBinding
 import com.example.myapplication.ui.professorsList.adapter.ProfessorAdapter
+import com.squareup.picasso.Picasso
 
 class ProfessorViewHolder(
     private val itemProfessorBinding: ItemProfessorBinding,
     private val onItemClickListener: ProfessorAdapter.OnItemClickListener
 ) : RecyclerView.ViewHolder(itemProfessorBinding.root) {
+
+    companion object{
+        private val IMAGE_HEIGHT = 150
+        private val IMAGE_WIDTH = 150
+    }
 
     private lateinit var professor :Professor
 
@@ -21,7 +27,15 @@ class ProfessorViewHolder(
 
     fun fillData(professor: Professor) {
         this.professor = professor
-        itemProfessorBinding.ivProfessorPhoto.setImageResource(R.drawable.ic_launcher_background)
+
+        Picasso
+            .get()
+            .load(professor.imageUrl)
+            .resize(IMAGE_WIDTH,IMAGE_HEIGHT)
+            .centerCrop()
+            .placeholder(R.color.photo_background)
+            .into(itemProfessorBinding.ivProfessorPhoto);
+
         itemProfessorBinding.tvProfessorName.text = professor.name
         itemProfessorBinding.tvCourseTitle.text = professor.course
     }

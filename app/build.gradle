@@ -47,6 +47,11 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     testImplementation 'junit:junit:4.12'
 
+    // Navigation
+    implementation("androidx.navigation:navigation-fragment-ktx:$libraries.nav_version")
+    implementation("androidx.navigation:navigation-ui-ktx:$libraries.nav_version")
+    implementation("androidx.navigation:navigation-dynamic-features-fragment:$libraries.nav_version")
+
     // Fragment-ktx
     implementation("androidx.fragment:fragment-ktx:$libraries.fragment_ktx")
 

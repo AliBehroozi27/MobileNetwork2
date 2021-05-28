@@ -8,6 +8,7 @@ import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.common.entity.Professor
@@ -27,10 +28,7 @@ class ProfessorListFragment : Fragment() {
     }
 
     private var listAdapter: ProfessorAdapter? = null
-    private val viewModel: ProfessorListViewModel by lazy {
-        ViewModelProvider(this)[ProfessorListViewModel::class.java]
-    }
-
+    private val viewModel by viewModels<ProfessorListViewModel>()
     private val itemClickListener = object : ProfessorAdapter.OnItemClickListener {
         override fun onClick(professor: Professor) {
         }

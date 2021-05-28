@@ -4,7 +4,5 @@ data class Professor constructor(
     val id: Int,
     val name: String,
     val course: String,
-    val imageResourcePath: String,
-    val mostRecentDegree: String,
-    val studyField: String
+    val imageUrl: String,
 )

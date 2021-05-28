@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.example.common.entity.Professor
 import com.example.myapplication.R
+import com.example.myapplication.databinding.ItemProfessorBinding
 import com.example.myapplication.ui.professorsList.viewholder.ProfessorViewHolder
 
 class ProfessorAdapter(
@@ -18,9 +19,10 @@ class ProfessorAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProfessorViewHolder {
-        return ProfessorViewHolder(
-            LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_professor, parent, false),
+        val itemBinding: ItemProfessorBinding =
+            ItemProfessorBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+
+        return ProfessorViewHolder(itemBinding,
             onItemClickListener
         )
     }

@@ -49,6 +49,11 @@ dependencies {
 
     // Picasso
     implementation "com.squareup.picasso:picasso:$libraries.picasso"
+    
+    // Navigation
+    implementation("androidx.navigation:navigation-fragment-ktx:$libraries.nav_version")
+    implementation("androidx.navigation:navigation-ui-ktx:$libraries.nav_version")
+    implementation("androidx.navigation:navigation-dynamic-features-fragment:$libraries.nav_version")
 
     // Fragment-ktx
     implementation("androidx.fragment:fragment-ktx:$libraries.fragment_ktx")

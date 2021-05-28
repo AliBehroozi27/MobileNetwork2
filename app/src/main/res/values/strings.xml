@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="no_items">no items</string>
+    <string name="professors_list">Professors List</string>
 </resources>

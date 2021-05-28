@@ -11,6 +11,7 @@ class ProfessorLocalDataSourceImpl @Inject constructor() : ProfessorLocalDataSou
         delay(5000)
         return listOf(
             Professor(
+                id = 0,
                 name = "Sauleh Ashtiani",
                 course = "Algorithms",
                 imageResourcePath = "Path",

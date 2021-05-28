@@ -49,7 +49,7 @@ class ProfessorLocalDataSourceImpl @Inject constructor() : ProfessorLocalDataSou
             Professor(
                 id = 6,
                 name = "Alastor Moody",
-                course = "Algorithms",
+                course = "Defense Against the Dark Arts",
                 imageUrl = "https://user-images.githubusercontent.com/47349044/119972739-d2257780-bfc7-11eb-982d-a4dc64383abb.jpg",
             ),
             Professor(

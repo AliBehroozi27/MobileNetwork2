@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.common.entity.Professor
 import com.example.myapplication.R
@@ -21,16 +21,11 @@ import kotlinx.android.synthetic.main.fragment_professor_list.*
 @AndroidEntryPoint
 class ProfessorListFragment : Fragment() {
 
-    companion object {
-        fun newInstance(): ProfessorListFragment {
-            return ProfessorListFragment()
-        }
-    }
-
     private var listAdapter: ProfessorAdapter? = null
     private val viewModel by viewModels<ProfessorListViewModel>()
     private val itemClickListener = object : ProfessorAdapter.OnItemClickListener {
         override fun onClick(professor: Professor) {
+            findNavController().navigate(R.id.action_professorListFragment_to_professorDetailFragment)
         }
     }
 
@@ -48,9 +43,6 @@ class ProfessorListFragment : Fragment() {
     }
 
     private fun setupUi() {
-        (activity as AppCompatActivity?)?.supportActionBar?.title =
-            resources.getString(R.string.professors_list)
-
         setupList()
     }
 
@@ -105,5 +97,11 @@ class ProfessorListFragment : Fragment() {
         rvList.visibility = GONE
         progressBar.visibility = VISIBLE
         tvStatus.visibility = GONE
+    }
+
+    override fun onDestroyView() {
+        // Prevent memory leak when fragment is detached but not destroyed
+        listAdapter = null
+        super.onDestroyView()
     }
 }

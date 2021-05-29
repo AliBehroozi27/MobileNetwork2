@@ -26,6 +26,7 @@ class ProfessorListFragment : Fragment() {
     private val viewModel by viewModels<ProfessorListViewModel>()
     private val itemClickListener = object : ProfessorAdapter.OnItemClickListener {
         override fun onClick(professor: Professor) {
+            viewModel.onProfessorSelected(professor)
             findNavController().navigate(R.id.action_professorListFragment_to_professorDetailFragment)
         }
     }

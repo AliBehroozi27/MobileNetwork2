@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.DiffUtil
 import com.example.common.entity.Professor
-import com.example.domain.interactor.GetProfessorsUseCase
+import com.example.usecase.interactor.GetProfessorsUseCase
 import com.example.myapplication.ui.util.ViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -61,5 +61,9 @@ class ProfessorListViewModel @Inject constructor(
     private fun onProfessorsLoadingFailed(throwable: Throwable) {
         _errorMessageLiveData.value = throwable.message
         _viewStateLiveData.value = ViewState.ERROR
+    }
+
+    fun onProfessorSelected(professor: Professor) {
+
     }
 }

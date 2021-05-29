@@ -2,7 +2,7 @@ package com.example.data.repository
 
 import com.example.common.entity.Professor
 import com.example.data.datasource.ProfessorLocalDataSource
-import com.example.domain.repository.ProfessorRepository
+import com.example.usecase.repository.ProfessorRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject

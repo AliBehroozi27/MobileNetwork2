@@ -1,20 +1,20 @@
 package com.example.myapplication.ui.professorsList
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import androidx.recyclerview.widget.DiffUtil
 import com.example.common.entity.Professor
+import com.example.myapplication.ui.util.SingleLiveEvent
 import com.example.usecase.interactor.GetProfessorsUseCase
 import com.example.myapplication.ui.util.ViewState
+import com.example.usecase.interactor.SelectProfessorUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class ProfessorListViewModel @Inject constructor(
-    private val getProfessorProfessorsUseCase: GetProfessorsUseCase
+    private val getProfessorProfessorsUseCase: GetProfessorsUseCase,
+    private val selectProfessorUseCase: SelectProfessorUseCase
 ) : ViewModel() {
 
     private val _professorsLiveData: MutableLiveData<List<Professor>> = MutableLiveData()
@@ -25,6 +25,9 @@ class ProfessorListViewModel @Inject constructor(
 
     private val _viewStateLiveData: MutableLiveData<ViewState> = MutableLiveData()
     val viewStateLiveData: LiveData<ViewState> = _viewStateLiveData
+
+    private val _navigationAction: SingleLiveEvent<NavigationAction> = SingleLiveEvent()
+    val navigationAction: LiveData<NavigationAction> = _navigationAction
 
     val diffCallback = object : DiffUtil.ItemCallback<Professor>() {
         override fun areItemsTheSame(oldItem: Professor, newItem: Professor): Boolean {
@@ -64,6 +67,12 @@ class ProfessorListViewModel @Inject constructor(
     }
 
     fun onProfessorSelected(professor: Professor) {
+        selectProfessorUseCase(professor).also {
+            _navigationAction.value = NavigationAction.NavigateProfessorDetail
+        }
+    }
 
+    sealed class NavigationAction {
+        object NavigateProfessorDetail : NavigationAction()
     }
 }

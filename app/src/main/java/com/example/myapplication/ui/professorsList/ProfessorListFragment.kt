@@ -27,7 +27,6 @@ class ProfessorListFragment : Fragment() {
     private val itemClickListener = object : ProfessorAdapter.OnItemClickListener {
         override fun onClick(professor: Professor) {
             viewModel.onProfessorSelected(professor)
-            findNavController().navigate(R.id.action_professorListFragment_to_professorDetailFragment)
         }
     }
 
@@ -84,6 +83,14 @@ class ProfessorListFragment : Fragment() {
 
         viewModel.errorMessageLiveData.observe(viewLifecycleOwner, {
             tvStatus.text = it
+        })
+
+        viewModel.navigationAction.observe(viewLifecycleOwner, { navAction ->
+            when (navAction) {
+                ProfessorListViewModel.NavigationAction.NavigateProfessorDetail -> {
+                    findNavController().navigate(R.id.action_professorListFragment_to_professorDetailFragment)
+                }
+            }
         })
     }
 

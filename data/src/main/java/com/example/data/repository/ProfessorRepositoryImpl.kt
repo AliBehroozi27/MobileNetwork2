@@ -8,7 +8,7 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class ProfessorRepositoryImpl @Inject constructor(private val professorLocalDataSource: ProfessorLocalDataSource) :
-    ProfessorRepository {
+    ProfessorRepository() {
 
     override suspend fun getProfessors(): List<Professor> = withContext(Dispatchers.IO) {
         professorLocalDataSource.getProfessors()

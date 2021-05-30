@@ -3,4 +3,7 @@
     <string name="about_us">About Us</string>
     <string name="no_items">no items</string>
     <string name="professors_list">Professors List</string>
+    <string name="course">Course:</string>
+    <string name="most_recent_place_of_study">Most Recent Place of Study:</string>
+    <string name="most_recent_degree">Most Recent Degree:</string>
 </resources>

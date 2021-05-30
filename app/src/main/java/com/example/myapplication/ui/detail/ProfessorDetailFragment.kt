@@ -28,9 +28,13 @@ class ProfessorDetailFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.professor.observe(viewLifecycleOwner, { professor ->
-            binding.ivHeaderPhoto.loadFrom(professor.imageUrl)
-            binding.tvProfessorName.text = professor.name
-            binding.toolbar.title = professor.name
+            with (binding) {
+                ivHeaderPhoto.loadFrom(professor.imageUrl)
+                toolbar.title = professor.name
+                tvCourseTitle.text = professor.course
+                tvMostRecentDegree.text = professor.mostRecentDegree
+                tvMostRecentPlaceOfStudy.text = professor.mostRecentPlaceOfStudy
+            }
         })
     }
 }

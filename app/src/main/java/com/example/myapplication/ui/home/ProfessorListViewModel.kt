@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.professorsList
+package com.example.myapplication.ui.home
 
 import androidx.lifecycle.*
 import androidx.recyclerview.widget.DiffUtil

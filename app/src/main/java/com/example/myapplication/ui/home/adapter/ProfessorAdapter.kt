@@ -1,13 +1,12 @@
-package com.example.myapplication.ui.professorsList.adapter
+package com.example.myapplication.ui.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.example.common.entity.Professor
-import com.example.myapplication.R
 import com.example.myapplication.databinding.ItemProfessorBinding
-import com.example.myapplication.ui.professorsList.viewholder.ProfessorViewHolder
+import com.example.myapplication.ui.home.viewholder.ProfessorViewHolder
 
 class ProfessorAdapter(
     callback: DiffUtil.ItemCallback<Professor>,

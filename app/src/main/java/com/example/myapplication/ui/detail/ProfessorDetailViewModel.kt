@@ -19,6 +19,9 @@ class ProfessorDetailViewModel @Inject constructor(
     val professor = _professor
 
     init {
+        // The current selectedProfessor is accessed by a stream (flow)
+        // As opposed to using a ShareViewModel, The data is stored in data layer to persist
+        // Through process (activity) death
         viewModelScope.launch {
             retrieveSelectedProfessorUseCase().collect { data ->
                 _professor.value = data

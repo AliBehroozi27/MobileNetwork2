@@ -58,12 +58,12 @@ class ProfessorListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (requireActivity() as AppCompatActivity).setSupportActionBar(binding.mainToolbar)
         setupUi()
         observe()
     }
 
     private fun setupUi() {
+        (requireActivity() as AppCompatActivity).setSupportActionBar(binding.mainToolbar)
         setupList()
     }
 

@@ -5,6 +5,6 @@ data class Professor constructor(
     val name: String,
     val course: String,
     val imageUrl: String,
-    val mostRecentPlaceOfStudy: String = "Place Of Study",
-    val mostRecentDegree: String = "Most Recent Degree"
+    val mostRecentPlaceOfStudy: String ,
+    val mostRecentDegree: String
 )

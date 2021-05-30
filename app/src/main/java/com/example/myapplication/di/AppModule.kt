@@ -2,7 +2,7 @@ package com.example.myapplication.di
 
 import com.example.data.datasource.ProfessorLocalDataSource
 import com.example.data.repository.ProfessorRepositoryImpl
-import com.example.domain.repository.ProfessorRepository
+import com.example.usecase.repository.ProfessorRepository
 import com.example.local.datasource.ProfessorLocalDataSourceImpl
 import dagger.Module
 import dagger.Provides

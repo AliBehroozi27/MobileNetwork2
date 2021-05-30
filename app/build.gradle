@@ -46,7 +46,9 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation "androidx.navigation:navigation-fragment-ktx:$libraries.navigation_fragment_ktx"
+    implementation "androidx.coordinatorlayout:coordinatorlayout:$libraries.coordinatorlayout"
+    implementation "com.google.android.material:material:$libraries.material"
+
     testImplementation 'junit:junit:4.12'
 
     // Picasso
@@ -56,6 +58,7 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:$libraries.nav_version")
     implementation("androidx.navigation:navigation-ui-ktx:$libraries.nav_version")
     implementation("androidx.navigation:navigation-dynamic-features-fragment:$libraries.nav_version")
+    implementation "androidx.navigation:navigation-fragment-ktx:$libraries.navigation_fragment_ktx"
 
     // Fragment-ktx
     implementation("androidx.fragment:fragment-ktx:$libraries.fragment_ktx")
@@ -85,7 +88,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-    implementation project(':domain')
+    implementation project(':usecase')
     implementation project(':data')
     implementation project(':local')
     implementation project(':common')

@@ -1,18 +1,18 @@
 package com.example.myapplication.ui.professorsList
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
+import android.view.*
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.common.entity.Professor
 import com.example.myapplication.R
+import com.example.myapplication.databinding.FragmentProfessorDetailBinding
+import com.example.myapplication.databinding.FragmentProfessorListBinding
 import com.example.myapplication.ui.professorsList.adapter.ProfessorAdapter
 import com.example.myapplication.ui.util.ViewState
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,36 +21,49 @@ import kotlinx.android.synthetic.main.fragment_professor_list.*
 @AndroidEntryPoint
 class ProfessorListFragment : Fragment() {
 
-    companion object {
-        fun newInstance(): ProfessorListFragment {
-            return ProfessorListFragment()
-        }
-    }
-
+    private lateinit var binding: FragmentProfessorListBinding
     private var listAdapter: ProfessorAdapter? = null
     private val viewModel by viewModels<ProfessorListViewModel>()
     private val itemClickListener = object : ProfessorAdapter.OnItemClickListener {
         override fun onClick(professor: Professor) {
+            viewModel.onProfessorSelected(professor)
+        }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.main_options_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.option_about_us -> {
+                findNavController().navigate(R.id.action_professorListFragment_to_aboutFragment)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_professor_list, container, false)
+    ): View {
+        binding = FragmentProfessorListBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         setupUi()
         observe()
     }
 
     private fun setupUi() {
-        (activity as AppCompatActivity?)?.supportActionBar?.title =
-            resources.getString(R.string.professors_list)
-
+        (requireActivity() as AppCompatActivity).setSupportActionBar(binding.mainToolbar)
         setupList()
     }
 
@@ -70,6 +83,14 @@ class ProfessorListFragment : Fragment() {
 
         viewModel.errorMessageLiveData.observe(viewLifecycleOwner, {
             tvStatus.text = it
+        })
+
+        viewModel.navigationAction.observe(viewLifecycleOwner, { navAction ->
+            when (navAction) {
+                ProfessorListViewModel.NavigationAction.NavigateProfessorDetail -> {
+                    findNavController().navigate(R.id.action_professorListFragment_to_professorDetailFragment)
+                }
+            }
         })
     }
 
@@ -105,5 +126,11 @@ class ProfessorListFragment : Fragment() {
         rvList.visibility = GONE
         progressBar.visibility = VISIBLE
         tvStatus.visibility = GONE
+    }
+
+    override fun onDestroyView() {
+        // Prevent memory leak when fragment is detached but not destroyed
+        listAdapter = null
+        super.onDestroyView()
     }
 }

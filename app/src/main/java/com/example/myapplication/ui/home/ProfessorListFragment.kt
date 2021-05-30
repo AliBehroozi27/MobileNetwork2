@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.professorsList
+package com.example.myapplication.ui.home
 
 import android.os.Bundle
 import android.view.*
@@ -11,9 +11,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.common.entity.Professor
 import com.example.myapplication.R
-import com.example.myapplication.databinding.FragmentProfessorDetailBinding
 import com.example.myapplication.databinding.FragmentProfessorListBinding
-import com.example.myapplication.ui.professorsList.adapter.ProfessorAdapter
+import com.example.myapplication.ui.home.adapter.ProfessorAdapter
 import com.example.myapplication.ui.util.ViewState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_professor_list.*

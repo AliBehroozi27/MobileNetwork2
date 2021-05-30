@@ -1,10 +1,10 @@
-package com.example.myapplication.ui.professorsList.viewholder
+package com.example.myapplication.ui.home.viewholder
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.common.entity.Professor
 import com.example.myapplication.R
 import com.example.myapplication.databinding.ItemProfessorBinding
-import com.example.myapplication.ui.professorsList.adapter.ProfessorAdapter
+import com.example.myapplication.ui.home.adapter.ProfessorAdapter
 import com.squareup.picasso.Picasso
 
 class ProfessorViewHolder(
